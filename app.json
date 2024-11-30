@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "QR-app-scanner-antiphishing",
+    "slug": "QR-app-scanner-antiphishing",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "plugins": ["expo-router"],
+    "entryPoint": "./index.ts",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "routes": [
+      {
+        "name": "Main",
+        "path": "/",
+        "component": "app/MainStack" 
+      }
+      
+      
+    ]
+  }
+}
