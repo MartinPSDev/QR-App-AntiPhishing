@@ -11,7 +11,7 @@ export const scanUrl = async (url: string) => {
       {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
-          'apikey': ''
+          'apikey': '[YOUR API KEY]'
         }
       }
     );
