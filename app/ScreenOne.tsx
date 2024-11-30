@@ -18,7 +18,7 @@ export default function ScreenOne() {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => router.push('ScreenTwo')}
+        onPress={() => router.push('./ScreenTwo')}
       >
         <Text style={styles.buttonText}>Go to next screen</Text>
       </TouchableOpacity>

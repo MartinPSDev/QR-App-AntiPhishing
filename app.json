@@ -6,9 +6,10 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "plugins": ["expo-router"],
-    "entryPoint": "./index.ts",
-    "newArchEnabled": true,
+    "scheme": "qr-scanner",
+    "plugins": [
+      "expo-router"
+    ],
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
@@ -24,16 +25,8 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "routes": [
-      {
-        "name": "Main",
-        "path": "/",
-        "component": "app/MainStack" 
-      }
-      
-      
-    ]
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    }
   }
 }

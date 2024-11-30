@@ -4,36 +4,25 @@
     "module": "esnext",
     "target": "ES2020",
     "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "noEmitHelpers": true,
-    "noEmitOnError": true,
-    "jsx": "react",
+    "jsx": "react-native",
     "lib": [
-      "ESNext",
-      "dom"
+      "DOM",
+      "ESNext"
     ],
-    "baseUrl": ".",
-    "paths": {
-      "~/*": [
-        "src/*"
-      ],
-      "@/*": [
-        "src/*",
-        "app/*"
-      ]
-    }
+    "allowJs": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "isolatedModules": true
   },
+  "extends": "expo/tsconfig.base",
   "include": [
-    "./src/**/*.tsx",
-    "./app/**/*.tsx"
-, "App.tsx"  ],
-  "files": [
-    "./references.d.ts"
+    "**/*.ts",
+    "**/*.tsx"
   ],
   "exclude": [
-    "node_modules",
-    "platforms"
-  ],
-  "extends": "expo/tsconfig.base"
+    "node_modules"
+  ]
 }

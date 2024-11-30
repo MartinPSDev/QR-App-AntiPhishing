@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Stack } from 'expo-router';
 
-export const MainStack = () => {
+const MainStack = () => {
   return (
     <Stack 
       screenOptions={{
@@ -16,3 +16,4 @@ export const MainStack = () => {
     />
   );
 };
+export default MainStack;

@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Link href="./scanner" asChild>
+        <Link href="/scanner" asChild>
           <TouchableOpacity style={styles.primaryButton}>
             <Text style={styles.primaryButtonText}>
               {t('scanQR')}
@@ -18,7 +18,7 @@ export default function Home() {
           </TouchableOpacity>
         </Link>
         
-        <Link href="./settings" asChild>
+        <Link href="/settings" asChild>
           <TouchableOpacity style={styles.secondaryButton}>
             <Text style={styles.secondaryButtonText}>
               {t('changeLanguage')}
@@ -33,7 +33,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F0F0F0', // Cambia esto al color de fondo deseado
+    backgroundColor: '#F0F0F0',
   },
   content: {
     flex: 1,
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   primaryButton: {
-    backgroundColor: '#4F46E5', // Cambia esto a tu color primario
+    backgroundColor: '#4F46E5',
     paddingVertical: 16,
     paddingHorizontal: 32,
     borderRadius: 999,
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
   secondaryButton: {
     marginTop: 16,
-    backgroundColor: '#6B7280', // Cambia esto a tu color secundario
+    backgroundColor: '#6B7280',
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: 8,

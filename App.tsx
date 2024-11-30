@@ -1,6 +1,7 @@
-import "expo-router/entry";
+import React from 'react';
+import { Slot } from 'expo-router';
 import './app/i18n';
 
 export default function App() {
-  return null; // Puedes dejarlo vacío si solo usas rutas automáticas
+  return <Slot />;
 }
