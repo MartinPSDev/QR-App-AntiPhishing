@@ -1,33 +1,33 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, ActivityIndicator } from 'react-native';
-import { Camera } from 'expo-camera'; 
+import { Camera } from 'expo-camera';
 import { useTranslation } from 'react-i18next';
 import { router } from 'expo-router';
+
+type BarCodeEvent = {
+  type: string;
+  data: string;
+};
 
 export default function Scanner() {
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
   const [scanned, setScanned] = useState(false);
-  const barCodeScannerRef = useRef<typeof Camera | null>(null);
   const { t } = useTranslation();
 
-  const requestCameraPermission = async () => {
-    try {
-      const { status } = await Camera.requestCameraPermissionsAsync(); // Cambiado a expo-camera
-      setHasPermission(status === 'granted');
-    } catch (err) {
-      console.error(err);
-      setHasPermission(false);
-    }
-  };
-
   useEffect(() => {
-    requestCameraPermission();
+    const getBarCodeScannerPermissions = async () => {
+      const { status } = await Camera.requestCameraPermissionsAsync();
+      setHasPermission(status === 'granted');
+    };
+
+    getBarCodeScannerPermissions();
   }, []);
 
-  const handleBarCodeScanned = ({ data }: { data: string }) => {
+  const handleBarCodeScanned = ({ type, data }: BarCodeEvent) => {
+    if (scanned) return;
     setScanned(true);
     router.push({
-      pathname: './results',
+      pathname: '/results',
       params: { data }
     });
   };
@@ -51,10 +51,19 @@ export default function Scanner() {
   return (
     <View style={styles.container}>
       <Camera
-        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={StyleSheet.absoluteFillObject}
-        ref={barCodeScannerRef}
+        type="back"
+        barCodeScannerSettings={{
+          barCodeTypes: ['qr']
+        }}
+        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
       />
+      {scanned && (
+        <View style={styles.scanOverlay}>
+          <ActivityIndicator size="large" color="#FFFFFF" />
+          <Text style={styles.scanningText}>{t('analyzing')}</Text>
+        </View>
+      )}
     </View>
   );
 }
@@ -62,16 +71,23 @@ export default function Scanner() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f0f0f0'
+    backgroundColor: '#000',
   },
   errorText: {
     color: 'red',
-    fontSize: 16
+    fontSize: 16,
+    textAlign: 'center',
+    margin: 20,
   },
-  scannerContainer: {
-    flex: 1,
-    position: 'relative'
-  }
+  scanOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0,0,0,0.7)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  scanningText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    marginTop: 10,
+  },
 });
