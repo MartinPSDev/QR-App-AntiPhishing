@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API_KEY = 'YOUR_VIRUSTOTAL_API_KEY'; // Replace with actual API key
 
-export const scanUrl = async (url: string) => {
+const scanUrl = async (url: string) => {
   try {
     // Submit URL for scanning
     const scanResponse = await axios.post(
@@ -38,3 +38,5 @@ export const scanUrl = async (url: string) => {
     };
   }
 };
+
+export default scanUrl;
