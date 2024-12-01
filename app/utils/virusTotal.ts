@@ -11,7 +11,7 @@ const scanUrl = async (url: string) => {
       {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
-          'apikey': '[YOUR API KEY]'
+          'apikey': API_KEY
         }
       }
     );
@@ -21,7 +21,7 @@ const scanUrl = async (url: string) => {
       'https://www.virustotal.com/vtapi/v2/url/report',
       {
         params: {
-          apikey: '',
+          apikey: API_KEY,
           resource: url
         }
       }
