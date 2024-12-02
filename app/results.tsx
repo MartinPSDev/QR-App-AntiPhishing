@@ -3,7 +3,7 @@ import { View, Text, ScrollView, ActivityIndicator } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { WebView } from 'react-native-webview';
-import { scanUrl } from './utils/virusTotal';
+import  scanUrl  from './utils/virusTotal';
 
 // Define el tipo para los resultados
 interface VtResult {
@@ -72,10 +72,10 @@ export default function Results() {
             <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 16 }}>{t('preview')}</Text>
             <View style={{ height: 300, borderRadius: 8, overflow: 'hidden' }}>
             <WebView
-              source={{ uri: Array.isArray(data) ? data[0] : data }} // Asegúrate de que data sea un string
+              source={{ uri: Array.isArray(data) ? data[0] : (typeof data === 'string' ? data : undefined) }} // Asegúrate de que data sea un string
               style={{ flex: 1 }}
               javaScriptEnabled={false}
-            />
+              />
             </View>
           </>
         )}

@@ -1,7 +1,6 @@
 import React from 'react';
-import { Text, View, Alert, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, View, Alert, Pressable, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
-
 
 export default function ScreenOne() {
   const router = useRouter();
@@ -10,22 +9,21 @@ export default function ScreenOne() {
       <Text style={styles.title}>
         Hello World!
       </Text>
-      <TouchableOpacity
+      <Pressable
         style={styles.button}
         onPress={() => Alert.alert('Tapped!')}
       >
         <Text style={styles.buttonText}>Tap me for an alert</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
+      </Pressable>
+      <Pressable
         style={styles.button}
         onPress={() => router.push('./ScreenTwo')}
       >
         <Text style={styles.buttonText}>Go to next screen</Text>
-      </TouchableOpacity>
+      </Pressable>
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
