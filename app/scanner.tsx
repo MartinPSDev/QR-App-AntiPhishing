@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, ActivityIndicator } from 'react-native';
-import { Camera } from 'expo-camera';
+import { Camera, CameraType } from 'expo-camera';
 import { useTranslation } from 'react-i18next';
 import { router } from 'expo-router';
 
@@ -52,7 +52,7 @@ export default function Scanner() {
     <View style={styles.container}>
       <Camera
         style={StyleSheet.absoluteFillObject}
-        type="back"
+        type={CameraType.back}
         barCodeScannerSettings={{
           barCodeTypes: ['qr']
         }}

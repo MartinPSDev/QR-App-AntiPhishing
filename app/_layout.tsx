@@ -21,10 +21,10 @@ export default function RootLayout() {
         },
       }}
     >
-      <Stack.Screen name="index" options={{ title: './Home' }} />
-      <Stack.Screen name="scanner" options={{ title: './Scanner' }} />
-      <Stack.Screen name="results" options={{ title: './Results' }} />
-      <Stack.Screen name="settings" options={{ title: './Settings' }} />
+      <Stack.Screen name="index" options={{ title: 'Home' }} />
+      <Stack.Screen name="scanner" options={{ title: 'Scanner' }} />
+      <Stack.Screen name="results" options={{ title: 'Results' }} />
+      <Stack.Screen name="settings" options={{ title: 'Settings' }} />
     </Stack>
   );
 }

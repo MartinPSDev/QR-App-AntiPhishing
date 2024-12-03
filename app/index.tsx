@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Pressable, StyleSheet } from 'react-native'; // Cambiado TouchableOpacity a Pressable
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Home() {
@@ -11,19 +11,19 @@ export default function Home() {
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         <Link href="/scanner" asChild>
-          <TouchableOpacity style={styles.primaryButton}>
+          <Pressable style={styles.primaryButton}>  // Cambiado de TouchableOpacity a Pressable
             <Text style={styles.primaryButtonText}>
               {t('scanQR')}
             </Text>
-          </TouchableOpacity>
+          </Pressable>
         </Link>
         
         <Link href="/settings" asChild>
-          <TouchableOpacity style={styles.secondaryButton}>
+          <Pressable style={styles.secondaryButton}>  // Cambiado de TouchableOpacity a Pressable
             <Text style={styles.secondaryButtonText}>
               {t('changeLanguage')}
             </Text>
-          </TouchableOpacity>
+          </Pressable>
         </Link>
       </View>
     </SafeAreaView>

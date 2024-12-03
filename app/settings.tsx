@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity,StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native'; 
 import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -19,25 +19,25 @@ export default function Settings() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: 'yourBackgroundColor' }}> // Cambia 'yourBackgroundColor' por el color deseado
-      <View style={{ padding: 16 }}> // Cambia 'p-4' por el estilo correspondiente
+    <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}> 
+      <View style={{ padding: 16 }}> 
         <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 24 }}>{t('changeLanguage')}</Text>
         
         {languages.map((lang) => (
-          <TouchableOpacity
+          <Pressable 
             key={lang.code}
-            style={[styles.button, i18n.language === lang.code ? styles.activeButton : styles.inactiveButton]} // Aplica estilos condicionalmente
+            style={[styles.button, i18n.language === lang.code ? styles.activeButton : styles.inactiveButton]} 
             onPress={() => changeLanguage(lang.code)}
           >
             <Text
               style={{
-                fontSize: 18, // Cambia 'text-lg' por el tamaño correspondiente
-                color: i18n.language === lang.code ? 'white' : '#4A4A4A', // Cambia 'text-white' y 'text-gray-800' por los colores deseados
+                fontSize: 18, 
+                color: i18n.language === lang.code ? 'white' : '#4A4A4A', 
               }}
             >
               {lang.name}
             </Text>
-          </TouchableOpacity>
+          </Pressable> 
         ))}
       </View>
     </SafeAreaView>
@@ -46,12 +46,12 @@ export default function Settings() {
 
 const styles = StyleSheet.create({
   button: {
-    padding: 16, // Cambia 'p-4' por el estilo correspondiente
-    marginBottom: 8, // Cambia 'mb-2' por el estilo correspondiente
-    borderRadius: 8, // Cambia 'rounded-lg' por el estilo correspondiente
+    padding: 16, 
+    marginBottom: 8, 
+    borderRadius: 8, 
   },
   activeButton: {
-    backgroundColor: 'yourPrimaryColor', // Cambia 'yourPrimaryColor' por el color deseado
+    backgroundColor: 'yourPrimaryColor', 
   },
   inactiveButton: {
     backgroundColor: 'white',

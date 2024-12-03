@@ -15,9 +15,14 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./app/*"],
+      "@/*": ["./app/*"]
+    }
   },
-  "extends": "expo/tsconfig.base",
+  "extends": "./tsconfig.base.json",
   "include": [
     "**/*.ts",
     "**/*.tsx"

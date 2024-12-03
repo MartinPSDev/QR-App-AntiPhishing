@@ -5,10 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { WebView } from 'react-native-webview';
 import  scanUrl  from './utils/virusTotal';
 
-// Define el tipo para los resultados
 interface VtResult {
   success: boolean;
-  data?: any; // Cambia 'any' por el tipo específico si lo conoces
+  data?: any; 
   error?: string;
 }
 
@@ -16,19 +15,19 @@ export default function Results() {
   const { data } = useLocalSearchParams();
   const { t } = useTranslation();
   const [scanning, setScanning] = useState(true);
-  const [results, setResults] = useState<VtResult | null>(null); // Cambia el tipo aquí
+  const [results, setResults] = useState<VtResult | null>(null); 
   const [isUrl, setIsUrl] = useState(false);
 
   useEffect(() => {
     const analyzeContent = async () => {
       try {
         const urlPattern = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w .-]*)*\/?$/;
-        const isUrlContent = typeof data === 'string' && urlPattern.test(data); // Asegúrate de que data sea un string
+        const isUrlContent = typeof data === 'string' && urlPattern.test(data); 
         setIsUrl(isUrlContent);
 
         if (isUrlContent) {
           const vtResults = await scanUrl(data);
-          setResults(vtResults); // Ahora esto es válido
+          setResults(vtResults); 
         }
         
         setScanning(false);
@@ -72,7 +71,7 @@ export default function Results() {
             <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 16 }}>{t('preview')}</Text>
             <View style={{ height: 300, borderRadius: 8, overflow: 'hidden' }}>
             <WebView
-              source={{ uri: Array.isArray(data) ? data[0] : (typeof data === 'string' ? data : undefined) }} // Asegúrate de que data sea un string
+              source={typeof data === 'string' ? { uri: data } : undefined} // Asegúrate de que data sea un string
               style={{ flex: 1 }}
               javaScriptEnabled={false}
               />
